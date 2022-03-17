@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="Kota_Palace.Views.ProfilePage"
+             NavigationPage.HasBackButton="True"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="Center" Margin="20">
+                <ImageButton WidthRequest="25" HeightRequest="25" HorizontalOptions="End" VerticalOptions="Start" />
+                <Frame HeightRequest="250">
+                    <Image HeightRequest="255" Aspect="Fill" Source="logo_pan"/>
+                </Frame>
+                <material:MaterialChipsGroup
+                    IsMultipleSelection="True"
+                    x:Name="ChipItems"
+                    ChipsHeightRequest="20"
+                    />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Stepper Visual="Material" Increment="1" Minimum="1" x:Name="ItemCounter"/>
+                    <material:MaterialLabel 
+                        Text="0" 
+                        Grid.Column="1"
+                        Margin="10,0"
+                        
+                        VerticalOptions="Center" FontSize="25"/>
+                </Grid>
+                
+                <material:MaterialOutlineButton 
+                    Text="Add To Cart" 
+                    TextColor="Black"
+                    BorderColor="{StaticResource Primary}"
+                    ToUpper="True"
+                    HorizontalOptions="Start"
+                    Icon="ic_add_shopping_cart_black_18dp"
+                    IsEnabled="True"
+                    Command="{Binding BtnAddToCart}"
+                    />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

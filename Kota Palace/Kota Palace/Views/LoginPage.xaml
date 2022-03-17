@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="Kota_Palace.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="KOTA PALACE" />
+            </StackLayout>
+            <Image Source="logo_pan" />
+            <pancakeview:PancakeView
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="10,10,10,10"
+                    Padding="20"
+                    Margin="20"
+                    VerticalOptions="Center"
+                    >
+                    <StackLayout>
+                        <input:AdvancedEntry
+                            CornerRadius="7"
+                            BackgroundColor="Gray"
+                            Placeholder="Email"
+                            Annotation="Email"
+                            AnnotationMessage="Invalid Email"
+                        />
+                        <input:AdvancedEntry
+                
+                        />
+                        <Button HeightRequest="35" />
+                    </StackLayout>
+                </pancakeview:PancakeView>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:rv="http://sharpnado.com" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="Kota_Palace.Views.DashboardPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Image WidthRequest="35" HeightRequest="35" Source="ic_account_circle_black_18dp" />
+                <Label Text="Name" VerticalOptions="Center" />
+                <ImageButton HorizontalOptions="EndAndExpand" HeightRequest="25" 
+                             BackgroundColor="Transparent" WidthRequest="25" Source="settings_icon"  />
+            </StackLayout>
+            <material:MaterialDivider Margin="5,5" BackgroundColor="{StaticResource Primary}" />
+            <rv:MaterialFrame x:Name="SettingsFrame"
+                              IsVisible="True"
+                              Margin="10,2,10,2"
+                              Padding="0"
+                              StyleId="1111">
+                
+                <material:MaterialEntry 
+                    Placeholder="Search"
+                    PlaceholderColor="White"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    CornerRadius="6"
+                    BorderColor="{DynamicResource Primary}"
+                    TextTransform="Default"
+                    LeadingIcon="search_icon"
+                    />
+                </rv:MaterialFrame>
+           
+            <CollectionView EmptyView="None" 
+                            x:Name="ShopCollection"  
+                            SelectionChanged="ShopCollection_SelectionChanged"
+                            SelectionMode="Single"
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto,Auto" Padding="10,0">
+
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding BusinessName}" FontAttributes="Bold"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding BusinessDescription}" 
+                                       FontAttributes="Bold" TextColor="#b4b4b4"/>
+                                <Ellipse Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" IsVisible="{Binding OnlineStatus}" 
+                                     VerticalOptions="Center" 
+                                     HorizontalOptions="Start" 
+                                         Fill="#1ad32e" 
+                                         HeightRequest="10" WidthRequest="10" StrokeThickness="0"/>
+                            </Grid>
+                            <Frame IsVisible="true" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   HasShadow="True"
+                                   HeightRequest="250"
+                                   Margin="10,0,10,0"
+                                   BackgroundColor="Transparent"
+                                   CornerRadius="17" Padding="0" IsClippedToBounds="True">
+                                <Image Source="{Binding ImgUrl, FallbackValue='logo_pan'}" 
+                                       
+                                       Aspect="Fill" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       />
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="Kota_Palace.Views.ShopDetailedPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Opacity="0.5"
+                           Aspect="Fill"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           HeightRequest="250"
+                           x:Name="ImgIcon"
+                           />
+                <ImageButton 
+                    HeightRequest="25" 
+                    WidthRequest="25" 
+                    Source="ic_cancel_black_18dp"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="10"
+                    x:Name="ImgClose"
+                    
+                />
+                <pv:PancakeView Grid.Row="1" CornerRadius="12,12,0,0" Margin="3,-20,3,3">
+                    <StackLayout>
+                        <CollectionView Margin="0" EmptyView="no data" x:Name="MenuCollection" SelectionMode="Single" SelectionChanged="MenuCollection_SelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                                 Span="2" Grid.Column="2" 
+                                                 HorizontalItemSpacing="2" VerticalItemSpacing="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <pv:PancakeView VerticalOptions="Start" BackgroundColor="White" IsClippedToBounds="True" 
+                                                    Margin="3" CornerRadius="3,3,3,3">
+                                        <Grid BackgroundColor="{StaticResource Primary}" VerticalOptions="Start" HeightRequest="230">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="70*" />
+                                                <RowDefinition Height="30*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Row="0" Aspect="AspectFill" Source="{Binding ImgUrl}" />
+                                            <BoxView Grid.Row="0" Opacity=".2" Color="Black" />
+                                            <StackLayout Grid.Row="1" Padding="5">
+                                                <Label Text="{Binding Name}" />
+                                                <Label Text="{Binding Price}" />
+                                                <Label Text="{Binding Status}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </pv:PancakeView>
+
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </pv:PancakeView>
+
+                <material:MaterialFloatingButton
+                    Icon="ic_add_shopping_cart_white_18dp"
+                    BackgroundColor="{StaticResource Primary}"
+                    Animation="Scale"
+                    FontSize="14"
+                    Grid.Row="1"
+                    Text="0"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    WidthRequest="25"
+                    Margin="10"
+                    Padding="5"
+                    ShadowColor="Black"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
